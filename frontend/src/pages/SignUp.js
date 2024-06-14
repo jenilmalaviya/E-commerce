@@ -49,7 +49,7 @@ const SignUp = () => {
       console.log(URL);
 
       const dataRespons = await fetch("http://localhost:3212/api/signup", {
-        method: summaryApi.SignUp.method,
+        method: summaryApi.signUp.method,
         headers: {
           "Content-Type": "application/json",
         },

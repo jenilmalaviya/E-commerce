@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import loginIcons from "../assest/signin.gif";
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import summaryApi from "../common";
+import { toast } from "react-toastify";
+import Context from "../context/context";
 
 const Login = () => {
   const [shadowPassword, setshadowPassword] = useState(false);
@@ -11,6 +14,9 @@ const Login = () => {
     email: "",
     password: "",
   });
+
+  const navigat = useNavigate();
+  const { fatchUserDeatils } = useContext(Context);
 
   const hendelOnechange = (e) => {
     const { name, value } = e.target;
@@ -22,8 +28,27 @@ const Login = () => {
       };
     });
   };
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const dataRespons = await fetch(summaryApi.signin.url, {
+      method: summaryApi.signin.method,
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+
+    const dataApi = await dataRespons.json();
+    if (dataApi.success) {
+      toast.success(dataApi.message);
+      fatchUserDeatils();
+      navigat("/");
+    }
+    if (dataApi.error) {
+      toast.error(dataApi.message);
+    }
   };
   console.log(data);
   return (
