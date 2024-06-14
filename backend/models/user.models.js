@@ -1,6 +1,6 @@
-import mongoose, { Schema } from "mongoose";
+import mongoose from "mongoose";
 
-const userSchema = new Schema(
+const userSchema = new mongoose.Schema(
   {
     name: {
       type: String,
@@ -15,13 +15,14 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
-
     profilepic: {
       type: String,
-      required: true,
+      required: false,
     },
   },
   {
     timestamps: true,
   }
 );
+
+export const UserModel = mongoose.model("User", userSchema);

@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import loginIcons from "../assest/signin.gif";
 import { imageTobase64 } from "../helpers/imageTobase64";
+import summaryApi from "../common";
+import { toast } from "react-toastify";
 
 const SignUp = () => {
   const [shadowPassword, setshadowPassword] = useState(false);
@@ -16,7 +18,9 @@ const SignUp = () => {
     profilepic: "",
   });
 
-  const hendelOnechange = (e) => {
+  const navigate = useNavigate();
+
+  const hendelOnechange = async (e) => {
     const { name, value } = e.target;
 
     setData((preve) => {
@@ -38,10 +42,36 @@ const SignUp = () => {
       };
     });
   };
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (data.password === data.ConfirmPassword) {
+      console.log(URL);
+
+      const dataRespons = await fetch("http://localhost:3212/api/signup", {
+        method: summaryApi.SignUp.method,
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      const dataApi = await dataRespons.json();
+      if (dataApi.success) {
+        toast.success(dataApi.message);
+        navigate("/login");
+      }
+
+      if (dataApi.error) {
+        toast.error(dataApi.message);
+      }
+
+      console.log("dataAPI", dataApi);
+    } else {
+      console.log("please cheack password and ConfirmPassword");
+    }
   };
-  console.log(data);
+
   return (
     <section id="signUp">
       <div className=" mx-auto container p-4 ">
