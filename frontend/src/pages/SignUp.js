@@ -68,7 +68,7 @@ const SignUp = () => {
 
       console.log("dataAPI", dataApi);
     } else {
-      console.log("please cheack password and ConfirmPassword");
+      toast.error("please cheack password and ConfirmPassword");
     }
   };
 

@@ -8,12 +8,13 @@ import { useDispatch, useSelector } from "react-redux";
 import summaryApi from "../common";
 import { toast } from "react-toastify";
 import { setUserDetails } from "../store/userSlice";
+
 const Header = () => {
   const user = useSelector((state) => state?.user?.userDetails);
   const dispatch = useDispatch();
-  const [menuDisplay, setmenuDisplay] = useState(false);
+  const [menuDisplay, setMenuDisplay] = useState(false);
 
-  const hendleLogout = async () => {
+  const handleLogout = async () => {
     const fetchData = await fetch(summaryApi.logout_user.url, {
       method: summaryApi.logout_user.method,
       credentials: "include",
@@ -23,17 +24,16 @@ const Header = () => {
     if (data.success) {
       toast.success(data.message);
       dispatch(setUserDetails(null));
-    }
-    if (data.error) {
+    } else if (data.error) {
       toast.error(data.message);
     }
   };
+
   return (
     <header className="h-16 shadow-md bg-white">
       <div className="h-full container mx-auto flex items-center px-4 justify-between">
-        <div className="">
+        <div>
           <Link to={"/"}>
-            {" "}
             <Logo w={90} h={50} />
           </Link>
         </div>
@@ -41,19 +41,19 @@ const Header = () => {
         <div className="hidden lg:flex items-center w-full justify-between max-w-sm border rounded-full focus-within:shadow pl-2">
           <input
             type="text"
-            placeholder="search product hre.."
-            className="w-full outline-none "
-          ></input>
-
+            placeholder="search product here.."
+            className="w-full outline-none"
+          />
           <div className="text-lg min-w-[50px] h-8 bg-red-600 flex items-center justify-center rounded-r-full text-white">
             <GrSearch />
           </div>
         </div>
+
         <div className="flex items-center gap-7">
-          <div className="relative  flex justify-center">
+          <div className="relative flex justify-center">
             <div
-              className="text-3xl cursor-pointer relative flex justify-center "
-              onClick={() => setmenuDisplay((preve) => !preve)}
+              className="text-3xl cursor-pointer relative flex justify-center"
+              onClick={() => setMenuDisplay((prev) => !prev)}
             >
               {user?.profilepic ? (
                 <img
@@ -66,42 +66,43 @@ const Header = () => {
               )}
             </div>
             {menuDisplay && (
-              <div className="absolute bg-white bottom-0 top-11 h-fit p-2 shadow-lg rounded ">
+              <div className="absolute bg-white bottom-0 top-11 h-fit p-2 shadow-lg rounded">
                 <nav>
                   <Link
                     to={"admin-panel"}
-                    className="whitespace-nowrap hover:bg-slate-100 p-2"
-                    onClick={() => setmenuDisplay((preve) => !preve)}
+                    className="whitespace-nowrap hover:bg-slate-100 p-2 hidden md:block"
+                    onClick={() => setMenuDisplay((prev) => !prev)}
                   >
-                    Admin Penal
+                    Admin Panel
                   </Link>
                 </nav>
               </div>
             )}
           </div>
 
-          <div className="text-2xl  relative">
+          <div className="text-2xl relative hover:scale-110 cursor-pointer">
             <span>
               <FaShoppingCart />
             </span>
-            <div className="bg-red-600 text-white w-5  h-5 rounded-full p-1 flex items-center justify-center absolute -top-2 -right-4">
-              <p className="text-xl ">0</p>
+            <div className="bg-red-600 text-white w-5 h-5 rounded-full p-1 flex items-center justify-center absolute -top-2 -right-4">
+              <p className="text-xl">0</p>
             </div>
           </div>
+
           <div>
             {user?._id ? (
               <button
-                onClick={hendleLogout}
-                className="px-5 py-1  rounded-full text-white bg-red-600 hover:bg-red-700"
+                onClick={handleLogout}
+                className="px-5 bg-black py-1 flex items-center justify-center rounded-xl cursor-pointer relative overflow-hidden transition-all duration-500 ease-in-out shadow-md hover:scale-105 hover:shadow-lg before:absolute before:top-0 before:-left-full before:w-full before:h-full before:bg-gradient-to-r before:from-[rgb(220,38,38)] before:to-[rgb(184,105,105)] before:transition-all before:duration-500 before:ease-in-out before:z-[-1] before:rounded-xl hover:before:left-0 text-[#fff]"
               >
                 Logout
               </button>
             ) : (
               <Link
                 to={"/login"}
-                className="px-5 py-1  rounded-full text-white bg-red-600 hover:bg-red-700"
+                className="px-5 bg-black py-1 flex items-center justify-center rounded-xl cursor-pointer relative overflow-hidden transition-all duration-500 ease-in-out shadow-md hover:scale-105 hover:shadow-lg before:absolute before:top-0 before:-left-full before:w-full before:h-full before:bg-gradient-to-r before:from-[rgb(220,38,38)] before:to-[rgb(184,105,105)] before:transition-all before:duration-500 before:ease-in-out before:z-[-1] before:rounded-xl hover:before:left-0 text-[#fff]"
               >
-                login
+                Login
               </Link>
             )}
           </div>

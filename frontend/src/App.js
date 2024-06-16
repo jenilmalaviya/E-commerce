@@ -22,13 +22,11 @@ const App = () => {
     if (dataApi.success) {
       dispatch(setUserDetails(dataApi.data));
     }
-
-    // console.log("user-data", dataResponse);
   };
 
   useEffect(() => {
     fatchUserDeatils();
-  }, []);
+  });
 
   return (
     <>
