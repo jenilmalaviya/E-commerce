@@ -25,6 +25,14 @@ const summaryApi = {
     url: `${backendDomin}/api/update-user`,
     method: "put",
   },
+  uplodeProduct: {
+    url: `${backendDomin}/api/uplode-product`,
+    method: "post",
+  },
+  allProduct: {
+    url: `${backendDomin}/api/get-product`,
+    method: "get",
+  },
 };
 
 export default summaryApi;

@@ -6,6 +6,8 @@ import { authToken } from "../middleware/authToken.js";
 import { userLogoutcontroller } from "../controller/UserLogout.js";
 import { alluserController } from "../controller/allUsers.js";
 import { updateUserController } from "../controller/updateUser.js";
+import { uplodeProductController } from "../controller/uplodeProduct.js";
+import { getProductController } from "../controller/getProduct.js";
 
 const router = express.Router();
 
@@ -18,3 +20,7 @@ router.get("/user-Logout", userLogoutcontroller);
 router.get("/all-user", authToken, alluserController);
 router.put("/update-user", authToken, updateUserController);
 export default router;
+
+// product uplode
+router.post("/uplode-product", authToken, uplodeProductController);
+router.get("/get-product", getProductController);
