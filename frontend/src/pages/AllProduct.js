@@ -36,7 +36,13 @@ const AllProduct = () => {
       {/* get all product */}
       <div className="flex items-center gap-5 py-4">
         {allProduct.map((product, index) => {
-          return <AdminProductCard data={product} key={index + "allproduct"} />;
+          return (
+            <AdminProductCard
+              data={product}
+              key={index + "allproduct"}
+              fatchData={fatchAllproduct}
+            />
+          );
         })}
       </div>
     </div>

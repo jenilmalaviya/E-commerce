@@ -8,6 +8,7 @@ import { alluserController } from "../controller/allUsers.js";
 import { updateUserController } from "../controller/updateUser.js";
 import { uplodeProductController } from "../controller/uplodeProduct.js";
 import { getProductController } from "../controller/getProduct.js";
+import { updateProductController } from "../controller/updateProduct.js";
 
 const router = express.Router();
 
@@ -24,3 +25,4 @@ export default router;
 // product uplode
 router.post("/uplode-product", authToken, uplodeProductController);
 router.get("/get-product", getProductController);
+router.post("/update-product", authToken, updateProductController);
