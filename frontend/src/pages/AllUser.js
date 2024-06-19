@@ -7,6 +7,14 @@ import ChangeUserRole from "../components/ChangeUserRole";
 const AllUser = () => {
   const [allUsers, setAllUsers] = useState([]);
   const [openUpdateRole, setopenUpdateRole] = useState(false);
+  const [updateUserDetails, setUpdateUserDetails] = useState({
+    email: "",
+    password: "",
+    ConfirmPassword: "",
+    name: "",
+    role: "",
+    _id: "",
+  });
 
   const fatchAllUser = async () => {
     const fatecData = await fetch(summaryApi.allUser.url, {
@@ -32,7 +40,7 @@ const AllUser = () => {
     <div className="pb-4 bg-white">
       <table className="w-full userTable">
         <thead>
-          <tr>
+          <tr className="bg-black text-white">
             <th>Sr.</th>
             <th>Name</th>
             <th>Email</th>
@@ -53,7 +61,10 @@ const AllUser = () => {
                 <td>
                   <button
                     className="bg-green-100 p-2 rounded-full cursor-pointer hover:bg-black hover:text-white "
-                    onClick={() => setopenUpdateRole(true)}
+                    onClick={() => {
+                      setUpdateUserDetails(el);
+                      setopenUpdateRole(true);
+                    }}
                   >
                     <MdModeEdit />
                   </button>
@@ -70,7 +81,14 @@ const AllUser = () => {
         </tbody>
       </table>
       {openUpdateRole && (
-        <ChangeUserRole onClose={() => setopenUpdateRole(false)} />
+        <ChangeUserRole
+          onClose={() => setopenUpdateRole(false)}
+          name={updateUserDetails.name}
+          email={updateUserDetails.email}
+          role={updateUserDetails.role}
+          userId={updateUserDetails._id}
+          callFun={fatchAllUser}
+        />
       )}
     </div>
   );

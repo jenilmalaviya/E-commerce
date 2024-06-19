@@ -31,7 +31,7 @@ const SignUp = () => {
     });
   };
 
-  const hendleUplodepic = async (e) => {
+  const hendleUploadpic = async (e) => {
     const file = e.target.files[0];
     const imagepic = await imageTobase64(file);
 
@@ -83,12 +83,12 @@ const SignUp = () => {
             <form>
               <label>
                 <div className="text-xs bg-opacity-80 pb-4 pt-2 cursor-pointer bg-slate-200 py-4 text-center absolute bottom-0 w-full">
-                  uplode photo
+                  upload photo
                 </div>
                 <input
                   type="file"
                   className="hidden"
-                  onChange={hendleUplodepic}
+                  onChange={hendleUploadpic}
                 />
               </label>
             </form>
