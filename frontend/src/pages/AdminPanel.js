@@ -40,7 +40,7 @@ const AdminPanel = () => {
               to={"all-users"}
               className="px-2 py-1 hover:bg-slate-100 rounded-full"
             >
-              all user
+              All user
             </Link>
             <Link
               to={"all-Products"}
