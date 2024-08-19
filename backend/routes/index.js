@@ -1,14 +1,15 @@
 import express from "express";
-import { userSignUpController } from "../controller/userSignUp.js";
-import { userSigninController } from "../controller/userSignin.js";
-import { userDetailController } from "../controller/userDetail.js";
 import { authToken } from "../middleware/authToken.js";
-import { userLogoutcontroller } from "../controller/UserLogout.js";
-import { alluserController } from "../controller/allUsers.js";
-import { updateUserController } from "../controller/updateUser.js";
-import { uplodeProductController } from "../controller/uplodeProduct.js";
-import { getProductController } from "../controller/getProduct.js";
-import { updateProductController } from "../controller/updateProduct.js";
+import { uplodeProductController } from "../controller/product/uplodeProduct.js";
+import { updateProductController } from "../controller/product/updateProduct.js";
+import { userSigninController } from "../controller/user/userSignin.js";
+import { userDetailController } from "../controller/user/userDetail.js";
+import { userLogoutcontroller } from "../controller/user/UserLogout.js";
+import { alluserController } from "../controller/user/allUsers.js";
+import { updateUserController } from "../controller/user/updateUser.js";
+import { userSignUpController } from "../controller/user/userSignUp.js";
+import { getProductController } from "../controller/product/getProduct.js";
+import { getCategoryProduct } from "../controller/product/getCategoryproduct.js";
 
 const router = express.Router();
 
@@ -26,3 +27,4 @@ export default router;
 router.post("/uplode-product", authToken, uplodeProductController);
 router.get("/get-product", getProductController);
 router.post("/update-product", authToken, updateProductController);
+router.get("/get-CategoryProduct", getCategoryProduct);

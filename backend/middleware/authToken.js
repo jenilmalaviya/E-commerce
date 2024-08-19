@@ -7,7 +7,6 @@ export const authToken = (req, res, next) => {
     if (!token) {
       return res.status(200).json({
         message: "Uner Not Login",
-
         error: true,
         success: false,
       });

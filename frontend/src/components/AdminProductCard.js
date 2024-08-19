@@ -6,19 +6,21 @@ const AdminProductCard = ({ data, fatchData }) => {
   const [editProduct, seteditProduct] = useState(false);
 
   return (
-    <div className="bg-white p-4 rounded">
+    <div className="bg-white p-4  rounded">
       <div className="w-30">
-        <div className="w-32 h-32 flex justify-center items-center">
+        <div className="w-45 h-40 flex justify-center items-center">
           <img
             src={data?.productimage[0]}
             width={80}
-            height={80}
+            height={90}
             className="mx-auto object-fill h-full"
           />
         </div>
-        <h1 className="text-ellipsis line-clamp-1 ">{data.productName}</h1>
+        <h1 className="break-words max-w-36 text-left mx-auto text-ellipsis line-clamp-2">
+          {data.productName}
+        </h1>
         <div>
-          <div className="font-bold text-center ">
+          <div className="font-bold text-left ">
             {displayINRCurrency(data.sellingPrice)}
           </div>
         </div>

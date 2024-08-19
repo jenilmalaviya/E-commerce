@@ -1,5 +1,5 @@
-import { uplodeProductPermission } from "../helpers/permission.js";
-import { productModel } from "../models/productModel.js";
+import { uplodeProductPermission } from "../../helpers/permission.js";
+import { productModel } from "../../models/productModel.js";
 
 export const uplodeProductController = async (req, res) => {
   try {

@@ -1,6 +1,6 @@
 import { Error } from "mongoose";
-import { UserModel } from "../models/user.models.js";
 import bcrypt from "bcrypt";
+import { UserModel } from "../../models/user.models.js";
 
 export const userSignUpController = async (req, res) => {
   try {
