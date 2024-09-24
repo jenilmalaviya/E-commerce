@@ -48,7 +48,6 @@ export const userSignUpController = async (req, res) => {
       message: "user created Successfully",
     });
   } catch (err) {
-    console.error(err); // Log the error to console for debugging
     res.status(500).json({
       message: err.message || err,
       error: true,

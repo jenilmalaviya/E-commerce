@@ -1,14 +1,10 @@
 import React from "react";
+import CategoryList from "../components/CategoryList";
 
 const Home = () => {
   return (
-    <div
-      className="text-blue-400 
-  
-  
-  "
-    >
-      Home
+    <div>
+      <CategoryList />
     </div>
   );
 };

@@ -12,16 +12,12 @@ export const authToken = (req, res, next) => {
       });
     }
     jwt.verify(token, process.env.TOKEN_SECREATE_KEY, function (err, decoded) {
-      console.log("decoded error", decoded);
-      console.log("token error", err);
-
       if (err) {
         console.log("error auth", err);
       }
       req.userId = decoded?._id;
       next();
     });
-    console.log("token    -", token);
   } catch (err) {
     console.error(err); // Log the error to console for debugging
     res.status(400).json({
