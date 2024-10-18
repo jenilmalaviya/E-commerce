@@ -18,7 +18,6 @@ export const uplodeProductController = async (req, res) => {
       data: saveProduct,
     });
   } catch (err) {
-    console.log(err);
     res.status(400).json({
       message: err.message || err,
       error: true,

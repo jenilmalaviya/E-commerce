@@ -5,12 +5,12 @@ import summaryApi from "../common";
 import { toast } from "react-toastify";
 
 const ChangeUserRole = ({ name, email, role, onClose, userId, callFun }) => {
-  console.log("first", ROLE);
+
   const [userRolr, setuserRolr] = useState(role);
 
   const hendleOnChange = (e) => {
     setuserRolr(e.target.value);
-    console.log(e.target.value);
+
   };
   const updateUserRole = async () => {
     const fetchRespons = await fetch(summaryApi.updateUser.url, {
@@ -30,7 +30,7 @@ const ChangeUserRole = ({ name, email, role, onClose, userId, callFun }) => {
       onClose();
       callFun();
     }
-    console.log("responseData - role update", responseData);
+
   };
 
   return (

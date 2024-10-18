@@ -37,37 +37,46 @@ const AllUser = () => {
   }, []);
 
   return (
-    <div className="pb-4 bg-white">
-      <table className="w-full userTable">
-        <thead>
-          <tr className="bg-black text-white">
-            <th>Sr.</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Role</th>
-            <th>Created Date</th>
-            <th>Action</th>
+
+
+    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-red-100 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+                <th scope="col" class="px-6 py-3">
+                Sr.
+                </th>
+            <th scope="col" class="px-6 py-3" >Name</th>
+            <th scope="col" class="px-6 py-3">Email</th>
+            <th scope="col" class="px-6 py-3">Role</th>
+            <th scope="col" class="px-6 py-3">Created Date</th>
+            <th scope="col" class="px-6 py-3">Action</th>
           </tr>
         </thead>
         <tbody>
           {allUsers.length > 0 ? (
             allUsers.map((el, index) => (
-              <tr key={index}>
-                <td>{index + 1}</td>
-                <td>{el?.name}</td>
-                <td>{el?.email}</td>
-                <td>{el?.role}</td>
-                <td>{moment(el?.createdAt).format("ll")}</td>
-                <td>
+              <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" key={index}>
+              {/* <tr key={index}> */}
+                <td class="px-6 py-2.5">{index + 1}</td>
+                <td scope="row" class="px-6 py-2.5 font-medium text-gray-900 whitespace-nowrap dark:text-white">{el?.name}</td>
+                <td class="px-6 py-2.5">{el?.email}</td>
+                <td class="px-6 py-2.5">{el?.role}</td>
+                <td class="px-6 py-2.5">{moment(el?.createdAt).format("ll")}</td>
+                <td class="px-8 py-2.5 text-left">
                   <button
-                    className="bg-green-100 p-2 rounded-full cursor-pointer hover:bg-black hover:text-white "
+                    className="bg-green-100 p-2 rounded-full cursor-pointer hover:underline hover:bg-black hover:text-white "
                     onClick={() => {
                       setUpdateUserDetails(el);
                       setopenUpdateRole(true);
                     }}
                   >
-                    <MdModeEdit />
+                    <MdModeEdit />  
                   </button>
+                   {/* <button href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline" onClick={() => {
+                      setUpdateUserDetails(el);
+                      setopenUpdateRole(true);
+                    }}>Edit</button> */}
                 </td>
               </tr>
             ))

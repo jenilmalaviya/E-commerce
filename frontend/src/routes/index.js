@@ -8,6 +8,7 @@ import AdminPanel from "../pages/AdminPanel";
 import AllUser from "../pages/AllUser";
 import AllProduct from "../pages/AllProduct";
 import CategoryProduct from "../pages/CategoryProduct";
+import AddSlider from "../pages/AddSlider";
 
 const router = createBrowserRouter([
   {
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
           {
             path: "all-Products",
             element: <AllProduct />,
+          },
+          {
+            path: "slider",
+            element: <AddSlider />,
           },
         ],
       },

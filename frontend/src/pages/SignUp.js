@@ -46,7 +46,7 @@ const SignUp = () => {
     e.preventDefault();
 
     if (data.password === data.ConfirmPassword) {
-      console.log(URL);
+
 
       const dataRespons = await fetch("http://localhost:3212/api/signup", {
         method: summaryApi.signUp.method,
@@ -66,7 +66,6 @@ const SignUp = () => {
         toast.error(dataApi.message);
       }
 
-      console.log("dataAPI", dataApi);
     } else {
       toast.error("please cheack password and ConfirmPassword");
     }

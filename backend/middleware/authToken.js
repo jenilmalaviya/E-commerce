@@ -12,9 +12,7 @@ export const authToken = (req, res, next) => {
       });
     }
     jwt.verify(token, process.env.TOKEN_SECREATE_KEY, function (err, decoded) {
-      if (err) {
-        console.log("error auth", err);
-      }
+      
       req.userId = decoded?._id;
       next();
     });

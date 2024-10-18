@@ -17,7 +17,7 @@ export const updateProductController = async (req, res) => {
       error: false,
     });
   } catch (err) {
-    console.log(err);
+
     res.status(400).json({
       message: err.message || err,
       error: true,

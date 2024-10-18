@@ -13,7 +13,7 @@ const AdminProductCard = ({ data, fatchData }) => {
             src={data?.productimage[0]}
             width={80}
             height={90}
-            className="mx-auto object-fill h-full"
+            className="mx-auto object-fill h-full object-scale-down "
           />
         </div>
         <h1 className="break-words max-w-36 text-left mx-auto text-ellipsis line-clamp-2">

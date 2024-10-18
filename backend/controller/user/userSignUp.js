@@ -7,9 +7,7 @@ export const userSignUpController = async (req, res) => {
     const { email, password, name, profilepic } = req.body;
 
     const user = await UserModel.findOne({ email });
-    console.log("====================================");
-    console.log(user);
-    console.log("====================================");
+
     if (user) {
       throw new Error("Alreaduy email exist");
     }

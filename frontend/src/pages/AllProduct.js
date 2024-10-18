@@ -11,8 +11,6 @@ const AllProduct = () => {
     const response = await fetch(summaryApi.allProduct.url);
     const dataResponse = await response.json();
 
-    console.log("product data ", dataResponse);
-
     setallProduct(dataResponse?.data || []);
   };
   useEffect(() => {

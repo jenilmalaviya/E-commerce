@@ -21,7 +21,7 @@ export const userSigninController = async (req, res) => {
     }
 
     const cheackPassword = await bcrypt.compare(password, user.password);
-    console.log("password cheack", cheackPassword);
+
 
     if (cheackPassword) {
       const TokenData = {

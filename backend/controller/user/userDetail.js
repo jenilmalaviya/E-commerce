@@ -2,7 +2,7 @@ import { UserModel } from "../../models/user.models.js";
 
 export const userDetailController = async (req, res) => {
   try {
-    console.log("user id", req.userId);
+
 
     const user = await UserModel.findById(req.userId);
 
@@ -12,7 +12,7 @@ export const userDetailController = async (req, res) => {
       error: false,
       message: "Login user detail",
     });
-    console.log("user", user);
+
   } catch (err) {
     console.error(err); // Log the error to console for debugging
     res.status(400).json({

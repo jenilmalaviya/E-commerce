@@ -12,7 +12,7 @@ export const updateUserController = async (req, res) => {
     };
 
     const user = await UserModel.findById(sessionUser);
-    console.log("user...role", user.role);
+   
 
     const updateUser = await UserModel.findByIdAndUpdate(userId, paylode);
 

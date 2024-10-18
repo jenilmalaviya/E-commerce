@@ -64,6 +64,7 @@ const UplodeProduct = ({ onClose, fatchData }) => {
       body: JSON.stringify(data),
     });
     const responseData = await response.json();
+    console.log("Response data:", responseData);
     if (responseData.success) {
       toast.success(responseData?.message);
       onClose();

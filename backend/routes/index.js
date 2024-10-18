@@ -10,6 +10,8 @@ import { updateUserController } from "../controller/user/updateUser.js";
 import { userSignUpController } from "../controller/user/userSignUp.js";
 import { getProductController } from "../controller/product/getProduct.js";
 import { getCategoryProduct } from "../controller/product/getCategoryproduct.js";
+import { addSlider, getSlider } from "../controller/product/SliderImage.js";
+import { upload } from "../middleware/multer.js";
 
 const router = express.Router();
 
@@ -28,3 +30,19 @@ router.post("/uplode-product", authToken, uplodeProductController);
 router.get("/get-product", getProductController);
 router.post("/update-product", authToken, updateProductController);
 router.get("/get-CategoryProduct", getCategoryProduct);
+
+// slider
+router.post(
+  "/slider-add",
+
+  upload.fields([
+    {
+      name: "image",
+      maxCount: 1,
+    },
+  ]),
+  authToken,
+  addSlider
+);
+
+router.get("/slider-get", getSlider);

@@ -2,7 +2,7 @@ import { UserModel } from "../../models/user.models.js";
 
 export const alluserController = async (req, res) => {
   try {
-    console.log("get all user", req.userId);
+
 
     const allUser = await UserModel.find();
 

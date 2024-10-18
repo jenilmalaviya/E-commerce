@@ -3,7 +3,7 @@ export const getCategoryProduct = async (req, res) => {
   try {
     // all product get use in distinct
     const productCategory = await productModel.distinct("category");
-    console.log("productCategory", productCategory);
+
 
     //  array to store one product from each product
     const productByCategory = [];

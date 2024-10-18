@@ -11,7 +11,7 @@ export const getProductController = async (req, res) => {
       data: allProduct,
     });
   } catch (error) {
-    console.log(error);
+ 
     res.status(400).json({
       message: error.message || error,
       error: true,

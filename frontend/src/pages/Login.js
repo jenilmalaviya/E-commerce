@@ -50,7 +50,7 @@ const Login = () => {
       toast.error(dataApi.message);
     }
   };
-  console.log(data);
+
   return (
     <section id="login">
       <div className=" mx-auto container p-4 ">

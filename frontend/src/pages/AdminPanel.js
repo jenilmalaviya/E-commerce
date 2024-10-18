@@ -48,6 +48,12 @@ const AdminPanel = () => {
             >
               All Products
             </Link>
+            <Link
+              to={"slider"}
+              className="px-2 py-1 hover:bg-slate-100 rounded-full"
+            >
+              Add Slider
+            </Link>
           </nav>
         </div>
       </aside>

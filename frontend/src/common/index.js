@@ -41,6 +41,14 @@ const summaryApi = {
     url: `${backendDomin}/api/get-CategoryProduct`,
     method: "get",
   },
+  addSlider: {
+    url: `${backendDomin}/api/slider-add`,
+    method: "post",
+  },
+  getSlider: {
+    url: `${backendDomin}/api/slider-get`,
+    method: "get",
+  },
 };
 
 export default summaryApi;
