@@ -1,9 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import AddsliderImage from "../components/AddsliderImage";
+import summaryApi from "../common";
+import AdminGetSlider from "../components/AdminGetSlider";
 
 const AddSlider = () => {
   const [openUplodeProduct, setOpenUplodeProduct] = useState(false);
+  const [getSlider, setgetSlider] = useState([]);
 
+  const fatchallslider = async () => {
+    const response = await fetch(summaryApi.getSlider.url);
+    const dataResponse = await response.json();
+    setgetSlider(dataResponse?.data || []);
+  };
+
+  useEffect(() => {
+    fatchallslider();
+  }, []);
   return (
     <div>
       <div className="bg-white py-2 px-4 flex justify-between items-center">
@@ -19,6 +31,18 @@ const AddSlider = () => {
       {openUplodeProduct && (
         <AddsliderImage onClose={() => setOpenUplodeProduct(false)} />
       )}
+      {/* get all product */}
+      <div className="flex items-center flex-wrap gap-5 py-4 h-[calc(100vh-190px)] overflow-y-scroll">
+        {getSlider.map((product, index) => {
+          return (
+            <AdminGetSlider
+              data={product}
+              key={index + "getSlider"}
+              fatchData={fatchallslider}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 };

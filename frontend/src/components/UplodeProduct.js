@@ -54,7 +54,7 @@ const UplodeProduct = ({ onClose, fatchData }) => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault(); // Fixed the typo here
+    e.preventDefault();
     const response = await fetch(summaryApi.uplodeProduct.url, {
       method: summaryApi.uplodeProduct.method,
       credentials: "include",
