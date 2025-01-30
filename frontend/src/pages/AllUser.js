@@ -40,12 +40,12 @@ const AllUser = () => {
 
 
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+      <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
         <thead class="text-xs text-gray-700 uppercase bg-red-100 dark:bg-gray-700 dark:text-gray-400">
-            <tr>
-                <th scope="col" class="px-6 py-3">
-                Sr.
-                </th>
+          <tr>
+            <th scope="col" class="px-6 py-3">
+              Sr.
+            </th>
             <th scope="col" class="px-6 py-3" >Name</th>
             <th scope="col" class="px-6 py-3">Email</th>
             <th scope="col" class="px-6 py-3">Role</th>
@@ -57,7 +57,7 @@ const AllUser = () => {
           {allUsers.length > 0 ? (
             allUsers.map((el, index) => (
               <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" key={index}>
-              {/* <tr key={index}> */}
+                {/* <tr key={index}> */}
                 <td class="px-6 py-2.5">{index + 1}</td>
                 <td scope="row" class="px-6 py-2.5 font-medium text-gray-900 whitespace-nowrap dark:text-white">{el?.name}</td>
                 <td class="px-6 py-2.5">{el?.email}</td>
@@ -71,9 +71,9 @@ const AllUser = () => {
                       setopenUpdateRole(true);
                     }}
                   >
-                    <MdModeEdit />  
+                    <MdModeEdit />
                   </button>
-                   {/* <button href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline" onClick={() => {
+                  {/* <button href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline" onClick={() => {
                       setUpdateUserDetails(el);
                       setopenUpdateRole(true);
                     }}>Edit</button> */}

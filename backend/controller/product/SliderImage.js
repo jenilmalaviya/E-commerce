@@ -47,6 +47,7 @@ export const addSlider = async (req, res) => {
     const newSlider = new Slider({
       ...req.body,
       image: uploadedImage.url,
+      isActive: req.body.isActive ?? true, 
     });
 
     const slider = await newSlider.save();
@@ -68,7 +69,7 @@ export const addSlider = async (req, res) => {
 
 export const getSlider = async (req, res) => {
   try {
-    const sliders = await Slider.find();
+    const sliders = await Slider.find({ isActive: true }); 
     return res.status(200).json({
       message: "Slider fetched successfully",
       error: false,
@@ -83,3 +84,21 @@ export const getSlider = async (req, res) => {
     });
   }
 };
+
+export const getAllSlider = async (req, res) => {
+  try {
+    const sliders = await Slider.find();
+    return res.status(200).json({
+      message: "Slider fetched successfully",
+      error: false,
+      success: true,
+      data: sliders,
+    })
+  } catch (error) {
+    return res.status(500).json({
+      message: error.message || error,
+      error: true,
+      success: false,
+    });    
+  }
+}

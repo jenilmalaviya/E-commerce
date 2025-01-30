@@ -49,6 +49,10 @@ const summaryApi = {
     url: `${backendDomin}/api/slider-get`,
     method: "get",
   },
+  getAllSlider: {
+    url: `${backendDomin}/api/get-all-slider`,
+    method: "get",
+  },
 };
 
 export default summaryApi;
