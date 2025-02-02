@@ -3,7 +3,7 @@ import { CgClose } from "react-icons/cg";
 import { toast } from "react-toastify";
 import summaryApi from "../common";
 import ClipLoader from "react-spinners/ClipLoader";
-const AddsliderImage = ({ onClose }) => {
+const AddsliderImage = ({ onClose , fatchData}) => {
   const [file, setFile] = useState(null);
   const [sliderName, setSliderName] = useState("");
   const [description, setDescription] = useState("");
@@ -38,6 +38,10 @@ const AddsliderImage = ({ onClose }) => {
     }
 
     const formData = new FormData();
+    formData.append("SliderName", sliderName);
+    formData.append("description", description);
+    formData.append("image", file)
+    
     setLoading(true);
 
     try {
@@ -53,6 +57,7 @@ const AddsliderImage = ({ onClose }) => {
       if (responseData.success) {
         toast.success(responseData.message || "Slider uploaded successfully!");
         onClose();
+        fatchData();
       } else if (responseData.error) {
         toast.error(responseData.message || "Failed to upload slider.");
       }
@@ -66,7 +71,7 @@ const AddsliderImage = ({ onClose }) => {
     <>
       <div className="fixed inset-0 z-10 flex items-center justify-center bg-black bg-opacity-50">
         <div className="w-full max-w-2xl max-h-[90vh] bg-white rounded-lg shadow-xl overflow-hidden">
-          <div className="flex items-center justify-between p-4 border-b">
+          <div className="flex items-center justify-between p-4">
             <h2 className="text-xl font-semibold text-gray-800">Slider Product</h2>
             <button onClick={onClose} className="text-gray-500 hover:text-gray-700 transition-colors">
               <CgClose className="w-6 h-6" />
@@ -85,7 +90,7 @@ const AddsliderImage = ({ onClose }) => {
                   placeholder="Enter Slider Name"
                   value={sliderName}
                   onChange={(e) => setSliderName(e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-black"
+                  className="w-full px-3 py-2 border bg-slate-100 border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-black"
                   required
                 />
               </div>
@@ -100,7 +105,7 @@ const AddsliderImage = ({ onClose }) => {
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
                   rows={3}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-black"
+                  className="w-full px-3 py-2 border bg-slate-100 border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-black"
                   required
                 ></textarea>
               </div>

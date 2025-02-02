@@ -10,7 +10,7 @@ import { updateUserController } from "../controller/user/updateUser.js";
 import { userSignUpController } from "../controller/user/userSignUp.js";
 import { getProductController } from "../controller/product/getProduct.js";
 import { getCategoryProduct } from "../controller/product/getCategoryproduct.js";
-import { addSlider, getAllSlider, getSlider } from "../controller/product/SliderImage.js";
+import { addSlider, deleteSlider, getAllSlider, getSlider } from "../controller/product/SliderImage.js";
 import { upload } from "../middleware/multer.js";
 
 const router = express.Router();
@@ -46,4 +46,5 @@ router.post(
 );
 
 router.get("/slider-get", getSlider);
-router.get("/get-all-slider", getAllSlider);
+router.get("/get-all-slider", authToken, getAllSlider);
+router.delete("/delete-slider/:id", authToken, deleteSlider);

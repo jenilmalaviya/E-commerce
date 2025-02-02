@@ -30,6 +30,26 @@ const AddSlider = () => {
     fetchAllSlider();
   }, []);
 
+  const deleteSlider = async (sliderId) => {
+    try {
+      const response = await fetch(`${summaryApi.deleteSlider.url}/${sliderId}`, {
+        method: summaryApi.deleteSlider.method,
+        credentials: "include", 
+      });
+  
+      const data = await response.json();
+  
+      if (data.success) {
+        toast.success("Slider deleted successfully");
+        fetchAllSlider(); // Refresh the list after deletion
+      } else {
+        toast.error(data.message);
+      }
+    } catch (error) {
+      toast.error("Failed to delete slider");
+    }
+  };
+
   return (
     <div>
       <div className="bg-white py-2 px-4 flex justify-between items-center">
@@ -52,12 +72,12 @@ const AddSlider = () => {
         <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
           <thead className="text-xs text-gray-700 uppercase bg-red-100 dark:bg-gray-700 dark:text-gray-400">
             <tr>
-              <th scope="col" className="px-6 py-3">Sr.</th>
-              <th scope="col" className="px-6 py-3">Name</th>
-              <th scope="col" className="px-6 py-3">Image</th>
-              <th scope="col" className="px-6 py-3 ">Description</th>
-              <th scope="col" className="px-6 py-3">Created Date</th>
-              <th scope="col" className="px-6 py-3">Action</th>
+              <th scope="col" className="px-6 py-4">Sr.</th>
+              <th scope="col" className="px-6 py-4">Name</th>
+              <th scope="col" className="px-6 py-4">Image</th>
+              <th scope="col" className="px-6 py-4">Description</th>
+              <th scope="col" className="px-6 py-4">Created Date</th>
+              <th scope="col" className="px-6 py-4">Action</th>
             </tr>
           </thead>
           <tbody>
@@ -66,6 +86,7 @@ const AddSlider = () => {
                 key={index}
                 data={slider}
                 index={index} // Passing the index to AdminGetSlider
+                onDelete={deleteSlider} 
               />
             ))}
           </tbody>

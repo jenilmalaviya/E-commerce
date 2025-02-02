@@ -53,6 +53,10 @@ const summaryApi = {
     url: `${backendDomin}/api/get-all-slider`,
     method: "get",
   },
+  deleteSlider: {
+    url: `${backendDomin}/api/delete-slider`,
+    method: "delete",
+  },
 };
 
 export default summaryApi;
