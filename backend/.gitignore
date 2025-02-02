@@ -7,7 +7,7 @@
 /src/assest
 .env
 
-
+/.env
 # testing
 /coverage
 
