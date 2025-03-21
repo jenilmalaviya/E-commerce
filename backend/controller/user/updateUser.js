@@ -4,10 +4,10 @@ export const updateUserController = async (req, res) => {
   try {
     const sessionUser = req.userId;
 
-    const { userId, email, name, role } = req.body;
+    const { userId, email, name, role } = req.body; // Get the data from the request body
     const paylode = {
       ...(email && { email: email }),
-      ...(name && { name: name }),
+      ...(name && { name: name }),    
       ...(role && { role: role }),
     };
 
